@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <!-- 1. Пути к заголовочным файлам -->
+      <AdditionalIncludeDirectories>
+        <!-- Пути из переменных окружения -->
+        $(CUDA_PATH)\include;
+        $(BOOST_ROOT)\;
+        <!-- Путь к заголовочным файлам нашего проекта MemoryData -->
+        <!-- Предполагается, что оба проекта (Tcuda и MemoryData) лежат в одной папке решения -->
+        $(SolutionDir)MemoryData\;
+
+        <!-- Пути внутри проекта -->
+        $(ProjectDir)include\;
+        $(ProjectDir);
+        %(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <!-- 2. Пути к каталогам библиотек -->
+      <AdditionalLibraryDirectories>
+        <!-- Пути из переменных окружения -->
+        $(CUDA_PATH)\lib\x64;
+        $(BOOST_ROOT)\stage\lib\;
+        <!-- Путь к собранной библиотеке MemoryData.lib -->
+        <!-- $(Configuration) автоматически подставит Debug или Release -->
+        $(SolutionDir)x64\$(Configuration)\;
+        %(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+      <!-- 3. Имена конкретных библиотек для линковки -->
+      <AdditionalDependencies>
+        OpenCL.lib;
+        nvml.lib;
+        <!-- Наша библиотека -->
+        MemoryData.lib;
+        <!-- Важные библиотеки CUDA, которые часто нужны -->
+        cudart_static.lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <!-- Общие настройки -->
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+
+      <!-- Пути к заголовочным файлам, которые нужны TcudaApp -->
+      <AdditionalIncludeDirectories>
+        <!-- Зависимости библиотек (Boost, так как Nexus его использует) -->
+        $(BOOST_ROOT)\;
+        <!-- Зависимости наших проектов -->
+        $(SolutionDir)..\Nexus\include\;
+        $(SolutionDir)..\CudaModule\include\;
+        %(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <!-- Пути к каталогам библиотек, которые нужны TcudaApp -->
+      <AdditionalLibraryDirectories>
+        <!-- Пути к внешним библиотекам -->
+        $(BOOST_ROOT)\stage\lib\;
+        <!-- ПУТЬ К НАШИМ СОБСТВЕННЫМ БИБЛИОТЕКАМ - ВОТ РЕШЕНИЕ! -->
+        $(SolutionDir)$(Platform)\$(Configuration)\;
+        %(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>
