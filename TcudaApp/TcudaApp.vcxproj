@@ -131,12 +131,18 @@
     <ClCompile Include="TcudaApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MemoryData\MemoryData.vcxproj">
+      <Project>{89d8988d-305b-4f68-86e5-fca1a45e2cea}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\CudaModule\CudaModule.vcxproj">
       <Project>{357a70ba-2b98-48c7-8ff6-9d5d04488bf8}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Nexus\Nexus.vcxproj">
       <Project>{259b6ce9-153e-4e25-9c1c-534d53be2c67}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="~!Новая структура.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

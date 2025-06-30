@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemDefinitionGroup>
     <ClCompile>
@@ -13,7 +13,7 @@
         $(SPDLOG_ROOT)\include\;
         $(SolutionDir)..\..\MemoryData\include\;
         $(ProjectDir)include\; <!-- Для своих .h в Nexus/include -->
-        $(ProjectDir)\; <!-- Для своих .h в Nexus/include -->
+        $(ProjectDir); <!-- Для своих .h в Nexus/include -->
         %(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
     </ClCompile>

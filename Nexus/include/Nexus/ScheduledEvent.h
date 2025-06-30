@@ -7,7 +7,6 @@
 #include <chrono>
 #include <functional>
 #include <thread>
-#include "MemoryData/SharedDataTypes.h"
 
 namespace nexus {
 

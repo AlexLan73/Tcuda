@@ -2,7 +2,6 @@
 
 #include <memory>
 #include <vector>
-#include "MemoryData/SharedDataTypes.h"
 
 // Предварительное объявление, чтобы не включать лишнего
 namespace nexus { class ScheduledEvent; }
@@ -16,7 +15,6 @@ namespace cuda_module {
     float getLastTemperature() const;
   private:
     float m_lastTemp = 0.0f;
-    ICudaValue i_cuda_value_;
   };
 
   // Промежуточный класс-агрегатор, как ты и просил

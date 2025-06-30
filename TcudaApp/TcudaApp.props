@@ -8,23 +8,30 @@
 
       <!-- Пути к заголовочным файлам, которые нужны TcudaApp -->
       <AdditionalIncludeDirectories>
-        <!-- Зависимости библиотек (Boost, так как Nexus его использует) -->
         $(BOOST_ROOT)\;
-        <!-- Зависимости наших проектов -->
         $(SolutionDir)..\Nexus\include\;
         $(SolutionDir)..\CudaModule\include\;
         %(AdditionalIncludeDirectories)
       </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <!-- Пути к каталогам библиотек, которые нужны TcudaApp -->
+      <!-- 1. ГДЕ ИСКАТЬ БИБЛИОТЕКИ -->
       <AdditionalLibraryDirectories>
-        <!-- Пути к внешним библиотекам -->
         $(BOOST_ROOT)\stage\lib\;
-        <!-- ПУТЬ К НАШИМ СОБСТВЕННЫМ БИБЛИОТЕКАМ - ВОТ РЕШЕНИЕ! -->
+        <!-- Путь к нашим собственным библиотекам -->
         $(SolutionDir)$(Platform)\$(Configuration)\;
+        <!-- Путь к библиотекам CUDA, включая nvml.lib -->
+        $(CUDA_PATH)\lib\x64\;
         %(AdditionalLibraryDirectories)
       </AdditionalLibraryDirectories>
+
+      <!-- 2. КАКИЕ ИМЕННО БИБЛИОТЕКИ БРАТЬ -->
+      <AdditionalDependencies>
+        Nexus.lib;
+        CudaModule.lib;
+        nvml.lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
 </Project>
