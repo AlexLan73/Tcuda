@@ -13,20 +13,22 @@
         <!-- Потом CUDA -->
         $(CUDA_PATH)\include\;
         <!-- Потом наши проекты -->
-        $(SolutionDir)..\Nexus\include\;
-        $(ProjectDir)include\;
-        $(ProjectDir)\;
-        %(AdditionalIncludeDirectories)
-      </AdditionalIncludeDirectories>
+		  $(SolutionDir)..\Nexus\include\;
+		  $(SolutionDir)..\..\MemoryData\include\;
+		  $(ProjectDir)include\;
+		  $(ProjectDir)\;
+		  %(AdditionalIncludeDirectories)
+	  </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <!-- Пути к библиотекам -->
       <AdditionalLibraryDirectories>
         <!-- Пути к каталогам библиотек CUDA и Boost -->
-        $(CUDA_PATH)\lib\x64\;
-        $(BOOST_ROOT)\stage\lib\;
-        %(AdditionalLibraryDirectories)
-      </AdditionalLibraryDirectories>
+		  $(CUDA_PATH)\lib\x64\;
+		  $(BOOST_ROOT)\stage\lib\;
+		  $(SolutionDir)$(Platform)\$(Configuration)\; <!-- Где лежит MemoryData.lib -->
+		  %(AdditionalLibraryDirectories)
+	  </AdditionalLibraryDirectories>
       <!-- Библиотеки для линковки -->
       <AdditionalDependencies>
         cudart_static.lib;

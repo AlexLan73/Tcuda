@@ -7,6 +7,7 @@
 #include <chrono>
 #include <functional>
 #include <thread>
+#include "MemoryData/SharedDataTypes.h"
 
 namespace nexus {
 
@@ -38,6 +39,7 @@ namespace nexus {
     std::thread m_thread;
     bool m_isPaused = false;
     bool m_isStopped = false;
+
   };
 
 } // namespace nexus

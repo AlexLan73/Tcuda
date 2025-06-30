@@ -152,6 +152,11 @@
     </ClCompile>
     <ClCompile Include="src\ScheduledEvent.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MemoryData\MemoryData.vcxproj">
+      <Project>{89d8988d-305b-4f68-86e5-fca1a45e2cea}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
